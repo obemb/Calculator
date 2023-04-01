@@ -57,6 +57,20 @@ function App() {
     }
   }
 
+  function showbuttons(){
+    const b=['/',7,8,9,'X',4,5,6,'-',1,2,3,'+',0,]
+    const digits=[]
+    for(let i=0;i<b.length;i++){
+      digits.push(
+          Number.isInteger(b[i]) ?
+          <button className='grey' onClick={inputNum} value={b[i]}>{b[i]}</button>
+          :
+          <button className='orange' onClick={operateHandler} value={b[i]}>{b[i]}</button>
+      )
+    }
+    return digits
+  }
+
   return (
     <div>
       
@@ -66,7 +80,11 @@ function App() {
         <button onClick={clear}>AC</button>
         <button onClick={changeSign}>+/-</button>
         <button onClick={percentage}>%</button>
-        <button className='orange' onClick={operateHandler} value={"/"}>/</button>
+
+        {showbuttons()}
+
+      
+        {/* <button className='orange' onClick={operateHandler} value={"/"}>/</button>
 
         <button className='grey' onClick={inputNum} value={7}>7</button>
         <button className='grey' onClick={inputNum} value={8}>8</button>
@@ -83,9 +101,9 @@ function App() {
         <button className='grey' onClick={inputNum} value={3}>3</button>
         <button className='orange' onClick={operateHandler} value={"+"}>+</button>
 
-        <button className='grey'>0</button>
+        <button className='grey'>0</button> */}
         <button style={{visibility:'hidden'}}></button>
-        <button className='grey'>.</button>
+        <button className='grey'>.</button> 
         <button className='orange' onClick={calculate}>=</button>
         
       </Container>
